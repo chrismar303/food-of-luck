@@ -7,6 +7,10 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans]
+      },
+      colors: {
+        'primary-color': '#F2CD5C',
+        'primary-light-color': '#F8E3A3'
       }
     }
   },
