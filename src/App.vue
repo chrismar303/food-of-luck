@@ -1,5 +1,3 @@
 <template>
-  <div class="wrapper">
-    Hello Chris :)
-  </div>
+  <router-view></router-view>
 </template>
