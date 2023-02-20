@@ -1,5 +1,5 @@
 <template>
-  <section class="section pt-24">
+  <section class="section py-24">
     <div class="w-3/4">
       <div
         v-show="!winner.id"
@@ -24,11 +24,11 @@
         <base-button outline @click="resetGame">Play Again</base-button>
       </div>
 
-      <ul class="flex h-3/5 flex-wrap justify-evenly gap-4 overflow-y-auto">
+      <ul class="flex h-3/5 flex-wrap justify-evenly gap-x-4 gap-y-8">
         <li
           v-for="restaurant in state.draw"
           :key="restaurant.id"
-          class="h-64 w-64"
+          class="h-64 w-64 lg:transform lg:duration-500 lg:hover:scale-110"
         >
           <draw-card :restaurant="restaurant" />
         </li>
