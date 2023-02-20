@@ -1,43 +1,49 @@
 <template>
   <section class="section py-24">
-    <div class="w-3/4">
+    <div class="w-5/6 md:w-full md:px-16">
       <div
         v-show="!winner.id"
-        class="mb-4 flex items-center justify-between gap-12"
+        class="mb-4 flex flex-col-reverse gap-2 md:flex-row md:items-center md:justify-between md:gap-12"
       >
-        <h2 class="text-bold text-2xl text-white">
+        <h2 class="text-bold text-md text-white md:text-4xl">
           Total Contestants Remaining:
           <span class="text-primary-color">
             {{ state.draw.length }}
           </span>
         </h2>
-        <div class="flex gap-4">
+        <div class="flex flex-col gap-2 md:flex-row md:gap-4">
           <base-button @click="drawRestaurants"> Draw </base-button>
           <base-button outline @click="resetGame"> Reset </base-button>
         </div>
       </div>
       <div
         v-show="winner.id"
-        class="mb-4 flex items-center justify-center gap-12"
+        class="mb-4 flex flex-col-reverse items-center justify-center gap-4 md:flex-row md:gap-12"
       >
-        <h2 class="text-bold text-2xl text-primary-color">Winner</h2>
+        <h2 class="text-bold text-3xl text-primary-color md:text-4xl">
+          Winner
+        </h2>
         <base-button outline @click="resetGame">Play Again</base-button>
       </div>
 
-      <ul class="flex h-3/5 flex-wrap justify-evenly gap-x-4 gap-y-8">
+      <transition-group
+        tag="ul"
+        name="list"
+        class="flex h-3/5 flex-wrap justify-evenly gap-x-4 gap-y-8"
+      >
         <li
           v-for="restaurant in state.draw"
           :key="restaurant.id"
           class="h-64 w-64 lg:transform lg:duration-500"
           :class="[
             winner.id
-              ? 'mt-24 hover:animate-pulse lg:scale-150'
+              ? 'mt-8 hover:animate-pulse md:mt-24 lg:scale-150'
               : 'lg:hover:scale-110'
           ]"
         >
           <draw-card :restaurant="restaurant" />
         </li>
-      </ul>
+      </transition-group>
     </div>
   </section>
 </template>
@@ -97,5 +103,23 @@ function resetGame() {
     rgb(32, 38, 57) 11.4%,
     rgb(63, 76, 119) 70.2%
   );
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
 }
 </style>
