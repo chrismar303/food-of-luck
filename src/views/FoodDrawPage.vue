@@ -1,7 +1,10 @@
 <template>
   <section class="section pt-24">
     <div class="w-3/4">
-      <div class="mb-4 flex items-center justify-between gap-12">
+      <div
+        v-show="!winner.id"
+        class="mb-4 flex items-center justify-between gap-12"
+      >
         <h2 class="text-bold text-2xl text-white">
           Total Contestants Remaining:
           <span class="text-primary-color">
@@ -10,10 +13,15 @@
         </h2>
         <div class="flex gap-4">
           <base-button @click="drawRestaurants"> Draw </base-button>
-          <base-button outline @click="state.draw = [...state.restaurants]">
-            Reset
-          </base-button>
+          <base-button outline @click="resetGame"> Reset </base-button>
         </div>
+      </div>
+      <div
+        v-show="winner.id"
+        class="mb-4 flex items-center justify-center gap-12"
+      >
+        <h2 class="text-bold text-2xl text-primary-color">Winner</h2>
+        <base-button outline @click="resetGame">Play Again</base-button>
       </div>
 
       <ul class="flex h-3/5 flex-wrap justify-evenly gap-4 overflow-y-auto">
@@ -45,6 +53,7 @@ yelpApi
     state.draw = [...state.restaurants]
   })
 
+let winner = reactive({})
 function drawRestaurants() {
   // remove half of the items randomly
   let i = 0
@@ -53,12 +62,18 @@ function drawRestaurants() {
     const index = selectRandomIndex()
     state.draw.splice(index, 1)
     ++i
+    if (state.draw.length <= 1) winner = state.draw[0]
   }
 }
 
 function selectRandomIndex() {
   const max = state.draw.length - 1
   return Math.floor(Math.random() * (max + 1))
+}
+
+function resetGame() {
+  state.draw = [...state.restaurants]
+  winner = {}
 }
 </script>
 
