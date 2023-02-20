@@ -1,6 +1,6 @@
 <template>
   <section class="section py-24">
-    <div class="w-5/6 md:w-3/4">
+    <div class="w-5/6 md:w-full md:px-16">
       <div
         v-show="!winner.id"
         class="mb-4 flex flex-col-reverse gap-2 md:flex-row md:items-center md:justify-between md:gap-12"
@@ -26,7 +26,11 @@
         <base-button outline @click="resetGame">Play Again</base-button>
       </div>
 
-      <ul class="flex h-3/5 flex-wrap justify-evenly gap-x-4 gap-y-8">
+      <transition-group
+        tag="ul"
+        name="list"
+        class="flex h-3/5 flex-wrap justify-evenly gap-x-4 gap-y-8"
+      >
         <li
           v-for="restaurant in state.draw"
           :key="restaurant.id"
@@ -39,7 +43,7 @@
         >
           <draw-card :restaurant="restaurant" />
         </li>
-      </ul>
+      </transition-group>
     </div>
   </section>
 </template>
@@ -99,5 +103,23 @@ function resetGame() {
     rgb(32, 38, 57) 11.4%,
     rgb(63, 76, 119) 70.2%
   );
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
 }
 </style>
