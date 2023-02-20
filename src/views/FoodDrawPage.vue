@@ -1,26 +1,28 @@
 <template>
   <section class="section py-24">
-    <div class="w-3/4">
+    <div class="w-5/6 md:w-3/4">
       <div
         v-show="!winner.id"
         class="mb-4 flex items-center justify-between gap-12"
       >
-        <h2 class="text-bold text-2xl text-white">
+        <h2 class="text-bold text-md text-white md:text-4xl">
           Total Contestants Remaining:
           <span class="text-primary-color">
             {{ state.draw.length }}
           </span>
         </h2>
-        <div class="flex gap-4">
+        <div class="flex flex-col gap-2 md:flex-row md:gap-4">
           <base-button @click="drawRestaurants"> Draw </base-button>
           <base-button outline @click="resetGame"> Reset </base-button>
         </div>
       </div>
       <div
         v-show="winner.id"
-        class="mb-4 flex items-center justify-center gap-12"
+        class="mb-4 flex flex-col-reverse items-center justify-center gap-4 md:flex-row md:gap-12"
       >
-        <h2 class="text-bold text-2xl text-primary-color">Winner</h2>
+        <h2 class="text-bold text-3xl text-primary-color md:text-4xl">
+          Winner
+        </h2>
         <base-button outline @click="resetGame">Play Again</base-button>
       </div>
 
@@ -31,7 +33,7 @@
           class="h-64 w-64 lg:transform lg:duration-500"
           :class="[
             winner.id
-              ? 'mt-24 hover:animate-pulse lg:scale-150'
+              ? 'mt-8 hover:animate-pulse md:mt-24 lg:scale-150'
               : 'lg:hover:scale-110'
           ]"
         >
