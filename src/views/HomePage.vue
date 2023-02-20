@@ -7,16 +7,36 @@
         Start The
         <span class="text-primary-color"> Eating </span>
       </h1>
-      <form class="mt-8 flex flex-col gap-2">
+      <form
+        class="mt-8 flex flex-col gap-2"
+        @submit.prevent="navigateToFoodDraw"
+      >
         <label class="text-lg text-white" for="location">Location</label>
-        <searchbar type="number" name="location" placeholder="zipcode" />
+        <searchbar
+          v-model="location"
+          type="number"
+          name="location"
+          placeholder="zipcode"
+        />
       </form>
     </div>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import Searchbar from '@/components/input/Searchbar.vue'
+
+const router = useRouter()
+
+const location = ref('')
+function navigateToFoodDraw() {
+  router.push({
+    name: 'food-draw',
+    query: { location: location.value }
+  })
+}
 </script>
 
 <style scoped>
@@ -30,6 +50,7 @@ import Searchbar from '@/components/input/Searchbar.vue'
     url(@/assets/images/background.jpg);
   background-position: center;
   background-size: cover;
-  height: 100dvh;
+  height: 100%;
+  min-height: 100dvh;
 }
 </style>

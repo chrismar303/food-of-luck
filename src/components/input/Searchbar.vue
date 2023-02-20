@@ -4,14 +4,22 @@
       class="flex-1 rounded-l-xl px-4"
       :type="type"
       :name="name"
+      :value="modelValue"
       :placeholder="placeholder"
+      @input="emit('update:modelValue', $event.target.value)"
     />
-    <base-button :rounded-left="false">GO</base-button>
+    <base-button :rounded-left="false" @click="emit('submit')">
+      GO
+    </base-button>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
+  modelValue: {
+    type: String,
+    required: false
+  },
   type: {
     type: String,
     required: false
@@ -25,4 +33,6 @@ const props = defineProps({
     required: false
   }
 })
+
+let emit = defineEmits(['update:modelValue', 'submit'])
 </script>
