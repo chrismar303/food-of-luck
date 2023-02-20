@@ -28,7 +28,12 @@
         <li
           v-for="restaurant in state.draw"
           :key="restaurant.id"
-          class="h-64 w-64 lg:transform lg:duration-500 lg:hover:scale-110"
+          class="h-64 w-64 lg:transform lg:duration-500"
+          :class="[
+            winner.id
+              ? 'mt-24 hover:animate-pulse lg:scale-150'
+              : 'lg:hover:scale-110'
+          ]"
         >
           <draw-card :restaurant="restaurant" />
         </li>
