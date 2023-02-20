@@ -5,10 +5,10 @@
     :alt="`${restaurant.name} link`"
     target="_blank"
   >
-    <div class="absolute h-64 w-64">
-      <div class="absolute h-full w-full bg-black opacity-50"></div>
+    <div class="absolute h-64 w-64 shadow-xl">
+      <div class="absolute h-full w-full rounded-md bg-black opacity-50"></div>
       <img
-        class="h-full w-full"
+        class="h-full w-full rounded-md"
         :src="restaurant.image_url"
         alt="restaurant.alias"
       />
