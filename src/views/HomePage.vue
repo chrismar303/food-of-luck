@@ -11,9 +11,9 @@
         class="mt-8 flex flex-col gap-2"
         @submit.prevent="navigateToFoodDraw"
       >
-        <label class="text-md text-white md:text-lg" for="location"
-          >Location</label
-        >
+        <label class="text-md text-white md:text-lg" for="location">
+          Location
+        </label>
         <searchbar
           v-model="location"
           type="number"
