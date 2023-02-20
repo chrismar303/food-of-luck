@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <input
-      class="flex-1 rounded-l-xl px-4"
+      class="flex-1 rounded-l-lg px-4"
       :type="type"
       :name="name"
       :value="modelValue"

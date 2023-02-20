@@ -1,7 +1,7 @@
 <template>
   <section class="landing">
     <div>
-      <h1 class="text-center text-6xl font-bold text-white">
+      <h1 class="text-center text-3xl font-bold text-white md:text-6xl">
         <span class="text-primary-color"> Stop </span> The Fighting <br />
         <span class="text-primary-color"> And </span><br />
         Start The
@@ -11,12 +11,15 @@
         class="mt-8 flex flex-col gap-2"
         @submit.prevent="navigateToFoodDraw"
       >
-        <label class="text-lg text-white" for="location">Location</label>
+        <label class="text-md text-white md:text-lg" for="location"
+          >Location</label
+        >
         <searchbar
           v-model="location"
           type="number"
           name="location"
           placeholder="zipcode"
+          class="h-10"
         />
       </form>
     </div>
