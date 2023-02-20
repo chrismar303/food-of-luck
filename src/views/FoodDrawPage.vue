@@ -1,6 +1,6 @@
 <template>
   <section class="section py-24">
-    <div class="w-5/6 md:w-3/4">
+    <div class="w-5/6 md:w-full md:px-16">
       <div
         v-show="!winner.id"
         class="mb-4 flex flex-col-reverse gap-2 md:flex-row md:items-center md:justify-between md:gap-12"
