@@ -3,7 +3,7 @@
     <div class="w-5/6 md:w-3/4">
       <div
         v-show="!winner.id"
-        class="mb-4 flex items-center justify-between gap-12"
+        class="mb-4 flex flex-col-reverse gap-2 md:flex-row md:items-center md:justify-between md:gap-12"
       >
         <h2 class="text-bold text-md text-white md:text-4xl">
           Total Contestants Remaining:
