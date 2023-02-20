@@ -1,9 +1,9 @@
 <template>
   <button
     :class="[
-      { 'rounded-l-xl': roundedLeft },
-      { 'rounded-r-xl': roundedRight },
-      'bg-primary-color py-2 px-4 text-lg font-bold text-white',
+      { 'rounded-l-lg': roundedLeft },
+      { 'rounded-r-lg': roundedRight },
+      'bg-primary-color py-2 px-4 text-sm font-bold text-white md:text-lg',
       outline ? secondaryStyles : ''
     ]"
   >
