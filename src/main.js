@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import BaseButton from '@/components/input/BaseButton.vue'
 import router from '@/router'
+import BaseButton from '@/components/input/BaseButton.vue'
 import { yelpApi } from './api'
 import '@/index.css'
 
