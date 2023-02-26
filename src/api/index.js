@@ -6,7 +6,7 @@ export const yelpApi = {
       baseURL: options.baseUrl,
       headers: {
         accept: 'application/json',
-        Authorization: options.token ? `Bearer ${options.token}` : ''
+        Authorization: `Bearer ${options.token}`
       }
     })
   }
