@@ -58,7 +58,7 @@ const yelpApi = inject('yelpApi')
 const state = reactive({ restaurants: [], draw: [] })
 
 yelpApi
-  .get('/search', {
+  .get('/yelp', {
     params: { location: route.query.location, terms: 'restaurant' }
   })
   .then(({ data }) => {
