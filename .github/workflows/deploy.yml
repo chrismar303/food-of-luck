@@ -25,14 +25,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1.3.0
-        with:
-          envkey_DEBUG: false
-          envkey_VITE_BASE_URL: '${{ secrets.VITE_BASE_URL }}'
-          file_name: .env
-          fail_on_empty: false
-
       - name: Build project
         run: npm run build
         env:
