@@ -1,4 +1,0 @@
-[submodule "food-of-luck"]
-	path = food-of-luck
-	url = https://github.com/chrismar303/food-of-luck.git
-	branch = deploy
