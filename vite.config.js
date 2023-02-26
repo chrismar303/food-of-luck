@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/food-of-luck/',
+  base: '/food-of-luck',
   plugins: [vue()],
   resolve: {
     alias: {
