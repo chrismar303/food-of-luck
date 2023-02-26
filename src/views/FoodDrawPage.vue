@@ -55,15 +55,15 @@ import DrawCard from '@/components/draw/DrawCard.vue'
 
 const route = useRoute()
 const yelpApi = inject('yelpApi')
-const state = reactive({ restaurants: [], draw: [] })
+const state = reactive({ restaurants: [], remainingOptions: [], draw: [] })
 
 yelpApi
   .get('/yelp', {
     params: { location: route.query.location, terms: 'restaurant' }
   })
   .then(({ data }) => {
-    state.restaurants = data.businesses
-    state.draw = [...state.restaurants]
+    state.restaurants = data
+    constructRandomDeck()
   })
 
 let winner = reactive({})
@@ -71,12 +71,11 @@ function drawRestaurants() {
   // remove half of the items randomly
   let i = 0
   const itemsToRemove = state.draw.length / 2
-  while (i < itemsToRemove) {
+  for (let i = 0; i < itemsToRemove; ++i) {
     const index = selectRandomIndex()
     state.draw.splice(index, 1)
-    ++i
-    if (state.draw.length <= 1) winner = state.draw[0]
   }
+  if (state.draw.length <= 1) winner = state.draw[0]
 }
 
 function selectRandomIndex() {
@@ -84,8 +83,19 @@ function selectRandomIndex() {
   return Math.floor(Math.random() * (max + 1))
 }
 
+function constructRandomDeck() {
+  state.draw = []
+  state.remainingOptions = [...state.restaurants]
+  for (let i = 0; i < state.restaurants.length / 2.5; ++i) {
+    const position = selectRandomIndex()
+    const randomCard = state.remainingOptions[position]
+    state.draw.push(randomCard)
+    state.remainingOptions.splice(position, 1)
+  }
+}
+
 function resetGame() {
-  state.draw = [...state.restaurants]
+  constructRandomDeck()
   winner = {}
 }
 </script>
