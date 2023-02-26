@@ -8,8 +8,7 @@ import '@/index.css'
 const app = createApp(App)
 app.component('BaseButton', BaseButton)
 app.use(yelpApi, {
-  baseUrl: import.meta.env.VITE_BASE_URL,
-  token: import.meta.env.VITE_YELP_API_KEY
+  baseUrl: import.meta.env.VITE_BASE_URL
 })
 app.provide('yelpApi', app.config.globalProperties.$yelpApi)
 app.use(router).mount('#app')
